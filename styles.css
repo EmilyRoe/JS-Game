@@ -163,7 +163,7 @@ Then restart button needs to take use to welcome page/refresh the game */
     font-family: 'Staatliches', cursive;
     text-align: center;
     border: black 1px solid;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: lightblue;
     z-index: 1;
 }
