@@ -3,11 +3,15 @@ const skyElement = document.querySelector(".sky");
 const treesElement = document.querySelector(".trees");
 const groundElement = document.querySelector(".ground");
 const avatar = document.querySelector(".avatar");
+const loseGame = document.querySelector (".loseGame");
+const startGame = document.querySelector(".start-button");
+const welcomePage = document.querySelector(".welcome-page");
 
 let avatarBottomPosition = 0;
 let avatarLeftPosition = 20;
 let gravity = 4;
 let obstacleRightPosition = 0;
+let isGameRunning = false;
 
 const initiateAvatar = () => {
     avatarBottomPosition -= gravity;
@@ -32,6 +36,9 @@ const generateObstacle = () => {
     console.log(obstacle);
 }
 const moveObstacle = () => {
+    if(isGameRunning === false) {
+        return
+    }
     const obstacle = document.querySelector(".obstacles")
     obstacle.style.right = obstacleRightPosition + '%';
     obstacleRightPosition += 1;
@@ -67,9 +74,13 @@ const increaseScore = () => {
 }
 
 const decreaseScore = () => {
+    if(isGameRunning === false) {
+        return
+    }
     if (obstacleRightPosition === 95 && avatarBottomPosition === 0 && avatarLeftPosition === 20 ) {
         currentNumber = currentNumber - 1;
         score.innerHTML = currentNumber;
+        checkForGameOver()
     }
 }
 
@@ -81,24 +92,28 @@ document.addEventListener("keydown", (event) => {
     }
 })
 
-// const loseGame = () => {
-//     querySelector score
-//     if(currentNumber = -10) {
-//        // change display on you lose message to not be hidden when score = -10
-//         alert("You lose message");
-//     }
-// }
+//loseMessage
+const checkForGameOver = () => {
+    console.log(loseGame)
+    if(currentNumber === -2) {
+        loseGame.classList.remove("hidden")
+        isGameRunning = false
+    }
+}
 
-// Restart button - this should appear with you lose message
-// const restartButton = document.querySelector(".restart-button")
-// restartButton.addEventListener("click", () => {
-//     //Need to get it to open welcome page with start button
-//     alert(welcomePage);
-// })
-
+//Restart button 
+const restartButton = document.querySelector(".restart-button")
+restartButton.addEventListener("click", () => {
+    loseGame.classList.add("hidden")
+    welcomePage.classList.remove("hidden")
+})
 
 //Welcome page and start button
-//const startButton = document.querySelector(".start-button")
-//startButton.addEventListener("click", () => {
-    //onclick(remove ".welcome-page")
-//})
+startGame.addEventListener("click", () => {
+    isGameRunning = true
+    welcomePage.classList.add("hidden")
+    currentNumber = 0;
+    score.innerHTML = 0;
+})
+
+

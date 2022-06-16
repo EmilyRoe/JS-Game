@@ -9,17 +9,26 @@
 </head>
 
 <body>
-    <h1>Jump the obstacles</h1>
-    <div class="score">Score: 0</div>
+    <h1 class="heading">Jump the Obstacles!</h1>
+    <div class="score-container">
+        <h2>Score:</h2>
+        <div class="score">0</div>
+    </div>
     <div class="game">
-        <!-- <div class="welcome-page">
+        <div class="welcome-page">
             <div class="welcome-message">Welcome!</div>
-            <div class="start-button">Start Game</div>
+                <div class="instructions">
+                    <h2>Instructions:</h2>
+                    <p>Use the up arrow on your keyboard to jump over the approaching obstacles!</p>
+                    <p>If your score hits -2, you lose!</p>
+                </div>
+            <button class="start-button">Start Game</button>
         </div>
-        <div class="loseGame">            
-            <div class="loseMessage">You Lose!</div>
-            <div class="restart-button">Restart</div>
-        </div> -->
+        <!-- Need to hide this until score hits -2 -->
+        <div class="loseGame hidden">            
+            <div class="loseMessage">Game Over!</div>
+            <button class="restart-button">Play Again?</button>
+        </div>
         <div class="game-container">
             <div class="sky"></div>
             <div class="trees"></div>
